@@ -19,7 +19,8 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const ENDPOINT = 'localhost:5000';
-    // const ENDPOINT = 'https://project-chat-application.herokuapp.com/';
+    // const ENDPOINT = 'https://chat-server-bangkok.herokuapp.com/';
+    // const ENDPOINT = 'http://3.1.221.3/';
 
     useEffect(() => {
         const { name, room } = queryString.parse(location.search);
@@ -36,7 +37,7 @@ const Chat = ({ location }) => {
             }
         });
 
-        // socket.emit('who', {name:"joe"});
+
         return () => {
             socket.emit('disconnect');
             socket.off();
@@ -46,6 +47,7 @@ const Chat = ({ location }) => {
 
     useEffect(() => {
 
+        // listen for server
         // get message from server that was sent to whole room
         // message from server
         socket.on('message', message => {
