@@ -20,8 +20,8 @@ const Chat = ({location}) => {
     const [messages, setMessages] = useState([]);
     const [clientId, setClientId] = useState(0);
     const [groupId, setGroupId] = useState([]);
-    // const ENDPOINT = 'localhost:5000';
-    const ENDPOINT = '18.140.101.64';
+    const ENDPOINT = 'localhost:5000';
+    // const ENDPOINT = '18.140.101.64';
 
     // setClientId(73);
     // console.log('client id ' + clientId);
@@ -108,6 +108,18 @@ const Chat = ({location}) => {
 
                 case '#whatGroups':
                     socket.emit('whatGroups', () => setMessage(''));
+                    break;
+
+                case '#myGroups':
+                    socket.emit('myGroups', clientId, () => setMessage(''));
+                    break;
+
+                case '#myId':
+                    socket.emit('myId', clientId, () => setMessage(''));
+                    break;
+
+                case '#myGroupIds':
+                    socket.emit('myGroupIds', clientId, () => setMessage(''));
                     break;
 
                 default:
