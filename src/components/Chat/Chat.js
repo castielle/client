@@ -118,10 +118,6 @@ const Chat = ({location}) => {
                     socket.emit('myId', clientId, () => setMessage(''));
                     break;
 
-                case '#myGroupIds':
-                    socket.emit('myGroupIds', clientId, () => setMessage(''));
-                    break;
-
                 default:
                     socket.emit('sendMessage', message, clientId, groupId, () => setMessage(''));
             }
